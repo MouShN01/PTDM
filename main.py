@@ -6,6 +6,7 @@ import time
 from frame_grab import FrameGrabber
 from speech import Speaker
 from analyzation import Analizer
+from weather_detection import WeatherConditionDetector
 
 def main():
     
@@ -18,6 +19,11 @@ def main():
     delay = 1.0 / fps if fps > 0 else 0.033  # запасний варіант — 30 FPS
     speaker = Speaker()
     analyzer = Analizer(model_path)
+    weather_detector = WeatherConditionDetector()
+
+    frame = frame_grabber.read()
+    condition = weather_detector.detect(frame)
+
     
     while True:
         start = time.time()
@@ -29,7 +35,8 @@ def main():
         # показуємо відео завжди
         cv2.imshow("Detection", frame)
 
-        result = analyzer.analize(snapshot)
+        mod_snapshot = weather_detector.apply_filter(snapshot)
+        result = analyzer.analize(mod_snapshot)
         if result:
             speaker.say(result)
 
