@@ -35,7 +35,7 @@ def main():
         # показуємо відео завжди
         cv2.imshow("Detection", frame)
 
-        mod_snapshot = weather_detector.apply_filter(snapshot)
+        mod_snapshot = weather_detector.apply_filter(snapshot, condition)
         result = analyzer.analize(mod_snapshot)
         if result:
             speaker.say(result)
