@@ -1,6 +1,6 @@
 import cv2
 from detection import ObjectDetector
-from speech import Speaker  # додали модуль озвучки
+from speech import Speaker
 import pytesseract
 pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 

@@ -2,7 +2,6 @@ import config
 import cv2
 import time
 
-#from video_processing import VideoProcessor
 from frame_grab import FrameGrabber
 from speech import Speaker
 from analyzation import Analizer
@@ -21,7 +20,7 @@ def main():
     analyzer = Analizer(model_path)
     weather_detector = WeatherConditionDetector()
 
-    frame = frame_grabber.read()
+    frame, snapshot = frame_grabber.read()
     condition = weather_detector.detect(frame)
 
     
