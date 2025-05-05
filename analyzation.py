@@ -2,8 +2,16 @@ from detection import ObjectDetector
 from class_names import class_names
 import pytesseract
 import cv2
+import os
 
-pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
+# Отримаємо шлях до поточної папки (де лежить скрипт)
+base_path = os.path.dirname(os.path.abspath(__file__))
+
+# Сформуємо повний шлях до tesseract.exe
+tesseract_path = os.path.join(base_path, "Tesseract-OCR", "tesseract.exe")
+
+# Вкажемо його pytesseract
+pytesseract.pytesseract.tesseract_cmd = tesseract_path
 
 class Analizer:
     def __init__(self, model):
