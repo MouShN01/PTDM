@@ -15,7 +15,7 @@ def main():
 
     frame_grabber = FrameGrabber(1, check_rate)
     fps = frame_grabber.get_fps()
-    delay = 1.0 / fps if fps > 0 else 0.033  # запасний варіант — 30 FPS
+    delay = 1.0 / fps if fps > 0 else 0.033
     speaker = Speaker()
     analyzer = Analizer(model_path)
     weather_detector = WeatherConditionDetector()
@@ -34,8 +34,8 @@ def main():
         # показуємо відео завжди
         cv2.imshow("Detection", frame)
 
-        mod_snapshot = weather_detector.apply_filter(snapshot, condition)
-        result = analyzer.analize(mod_snapshot)
+        #mod_snapshot = weather_detector.apply_filter(snapshot, condition)
+        result = analyzer.analize(snapshot)
         if result:
             speaker.say(result)
 
