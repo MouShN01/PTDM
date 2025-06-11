@@ -13,7 +13,7 @@ def main():
     model_path = config.MODEL_PATH
     check_rate = config.CHECK_RATE
 
-    frame_grabber = FrameGrabber(1, check_rate)
+    frame_grabber = FrameGrabber(0, check_rate)
     fps = frame_grabber.get_fps()
     delay = 1.0 / fps if fps > 0 else 0.033
     speaker = Speaker()
